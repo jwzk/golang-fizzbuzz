@@ -1,0 +1,19 @@
+version: "3"
+services:
+  fizzbuzz:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - fizzbuzz
+  redis:
+    image: "redis:6.2-alpine"
+    ports:
+      - "6379:6379"
+    networks:
+      - fizzbuzz
+networks:
+  fizzbuzz:
+    driver: "bridge"
